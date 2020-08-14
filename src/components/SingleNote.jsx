@@ -11,12 +11,11 @@ const SingleNote = () => {
   });
 
   const getSingleNote = () => {
-    return arrayNotes.find( note => note.id === parseInt(slug) );
+    return arrayNotes.find( note => note.id === slug );
   }
 
   useEffect(() => {
     setNote(getSingleNote());
-    console.log(note);
   }, []);
 
   return(
