@@ -4,16 +4,20 @@ import { noteContext } from '../context/NoteContext';
 
 const SingleNote = () => {
   const { slug } = useParams();
-  const { notes } = useContext(noteContext);
-  const [note, setNote] = useState({});
+  const { notes: arrayNotes } = useContext(noteContext);
+  const [note, setNote] = useState({
+    title: "",
+    body: ""
+  });
+
+  const getSingleNote = () => {
+    return arrayNotes.find( note => note.id === parseInt(slug) );
+  }
 
   useEffect(() => {
-    setNote(getNoteById(slug));
+    setNote(getSingleNote());
+    console.log(note);
   }, []);
-
-  const getNoteById = (slug) => {
-    return notes.find((note) => note.id === parseInt(slug));
-  }
 
   return(
     <div className="single">

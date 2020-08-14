@@ -16,7 +16,7 @@ const MultipleNote = () => {
       <div className="multiple-note">
         <div className="container">
           { notes.map((item, index) => (
-            <NoteItem item={item} key={ index } />
+            <NoteItem note={item} key={ index } />
           )) }
         </div>
       </div>
