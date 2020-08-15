@@ -1,7 +1,9 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import { noteContext } from '../context/NoteContext';
 
 const NoteItem = ({note}) => {
+  const { removeNote } = useContext(noteContext);
   let history = useHistory();
 
   const goSingle = (slug) => {
@@ -14,6 +16,10 @@ const NoteItem = ({note}) => {
         <div className="card-content">
           <h2 onClick={ () => goSingle(note.id) }>{ note.title }</h2>
           <div className="body">{ note.body }</div>
+        </div>
+        <div className="card-actions">
+          <Link className="edit" to={`/edit/${note.id}`}>Edit</Link>
+          <button className="delete" onClick={ () => removeNote(note.id) }>Delete</button>
         </div>
       </div>
     </div>

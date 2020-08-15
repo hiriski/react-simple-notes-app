@@ -34,12 +34,24 @@ const NoteContextProvider = ({children}) => {
     setNotes([...notes, data]);
   }
 
+  /** Method untuk edit catatan */
+  const editNote = (data) => {
+    const newNotes = notes.map((item) => (item.id === data.id) ? data : item)
+    setNotes(newNotes);
+  }
+
+  /** Method untuk hapus catatan */
+  const removeNote = (id) => {
+    let newNotes = notes.filter( note => note.id !== id);
+    setNotes(newNotes);
+  }
+  
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
   return(
-    <noteContext.Provider value={{notes, setNotes, addNote}}>
+    <noteContext.Provider value={{notes, setNotes, addNote, removeNote, editNote}}>
       {children}
     </noteContext.Provider>
   );

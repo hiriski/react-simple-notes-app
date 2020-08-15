@@ -5,6 +5,7 @@ import NoteContextProvider from './context/NoteContext';
 import MultipleNote from './components/MultipleNote';
 import SingleNote from  './components/SingleNote';
 import AddNote from './components/AddNote';
+import EditNote from './components/EditNote';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
               </Route>
               <Route path="/create">
                 <AddNote/>
+              </Route>
+              <Route path="/edit/:slug">
+                <EditNote/>
               </Route>
               <Route path="/note/:slug">
                 <SingleNote/>
